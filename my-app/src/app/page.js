@@ -1,7 +1,8 @@
+import ProductModule from "@/modules/ProductModule";
 import Image from "next/image";
 
 export default function Home() {
-  return (
-   <main></main>
-  );
+  return <main>
+    <ProductModule/>
+  </main>;
 }
