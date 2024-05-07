@@ -14,12 +14,14 @@ const ProductCard = ({
   rate,
   count,
   cartCount,
+  setCartItems,
 }) => {
-  const [cart, addCart] = useState(0);
   const handleSubmit = (e) => {
     e.preventDefault();
-    cartCount(cart);
-    console.log(cart);
+    setCartItems((prev) => [
+      ...prev,
+      { ...i, count: i?.count ? i?.count + 1 : 1 },
+    ]);
   };
 
   return (
@@ -51,14 +53,12 @@ const ProductCard = ({
           </button>
           <button
             onClick={handleSubmit}
-            value={() => addCart + 1}
             className="justify-center w-full flex flex-row items-center shadow-md font-semibold bg-indigo-600 text-white p-2 rounded-lg space-x-2"
           >
             <FaCartArrowDown />
             <span>Add to Cart</span>
           </button>
         </div>
-        
       </div>
     </div>
   );
