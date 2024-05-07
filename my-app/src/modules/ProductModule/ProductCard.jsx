@@ -13,10 +13,15 @@ const ProductCard = ({
   category,
   rate,
   count,
+  cartCount,
 }) => {
   const [cart, addCart] = useState(0);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    cartCount(cart);
+    console.log(cart);
+  };
 
-  console.log(cart)
   return (
     <div className="bg-white shadow-[0_3px_10px_rgb(0,0,0,0.2)] p-4 h-[520px] overflow-hidden rounded-lg">
       <div className="space-y-3">
@@ -45,16 +50,17 @@ const ProductCard = ({
             <span>Buy Now</span>
           </button>
           <button
-            onClick={() => addCart + 1}
+            onClick={handleSubmit}
+            value={() => addCart + 1}
             className="justify-center w-full flex flex-row items-center shadow-md font-semibold bg-indigo-600 text-white p-2 rounded-lg space-x-2"
           >
             <FaCartArrowDown />
             <span>Add to Cart</span>
           </button>
         </div>
+        
       </div>
     </div>
   );
 };
 export default ProductCard;
-

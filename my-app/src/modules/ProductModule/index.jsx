@@ -6,7 +6,7 @@ import ProductCard from "./ProductCard";
 const ProductModule = () => {
   return (
     <div>
-      <div>Cart: {} </div>
+      <div>Cart: {ProductCard?.cartCount}</div>
       <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-4 justify-items-center">
         {product?.map((i, idx) => {
           return (
