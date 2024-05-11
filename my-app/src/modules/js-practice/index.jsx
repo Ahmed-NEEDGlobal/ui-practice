@@ -4,10 +4,16 @@ import UseFetch from "./UseFetch";
 
 const JsPractice = () => {
   const [number, setNumber] = useState(0);
+  const [filters, setFilters] = useState({ number: 0 });
 
-  const { data, loading } = UseFetch(`http://numbersapi.com/${number}/trivia`);
+  const { data, loading } = UseFetch(
+    `http://numbersapi.com/${filters?.number}/trivia`
+  );
 
   const handleSubmit = (e) => {
+    setFilters({
+      number: number,
+    });
     e.preventDefault();
   };
 
