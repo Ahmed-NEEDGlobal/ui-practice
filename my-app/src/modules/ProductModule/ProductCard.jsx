@@ -16,6 +16,8 @@ const ProductCard = ({
   cartCount,
   setCartItems,
 }) => {
+  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setCartItems((prev) => [

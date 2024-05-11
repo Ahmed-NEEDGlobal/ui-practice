@@ -1,16 +1,25 @@
 "use client";
 import { product } from "@/app/data/product";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 
-const ProductModule = () => {
+const ProductModule = (url) => {
+  const [productData, setProductData] = useState([]);
+
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products")
+      .then((res) => res.json())
+      .then((json) => setProductData(json));
+      
+  }, [url]);
+
   const [cartItems, setCartItems] = useState([]);
   console.log(cartItems);
   return (
     <div>
       <div>Cart: {cartItems?.length}</div>
       <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-4 justify-items-center">
-        {product?.map((i, idx) => {
+        {productData?.map((i, idx) => {
           return (
             <ProductCard
               key={i?.id}
@@ -28,9 +37,9 @@ const ProductModule = () => {
         })}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-4 justify-items-center">
-        <h2>Cart </h2>
-        {cartItems?.map((i, idx) => {
+       <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-4 justify-items-center">
+         <h2>Cart </h2>
+         {cartItems?.map((i, idx) => {
           return (
             <ProductCard
               key={i?.id}
@@ -48,7 +57,7 @@ const ProductModule = () => {
         })}
       </div>
     </div>
-  );
+ );
 };
 
 export default ProductModule;
