@@ -7,7 +7,16 @@ module.exports = {
     "./src/modules/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        poppins: "poppins",
+      },
+      colors: {
+        "card-red": "#C71720",
+        "card-text-ash": "#777777",
+        "card-3dot-ash": "#676879",
+      },
+    },
   },
   plugins: [],
 };
